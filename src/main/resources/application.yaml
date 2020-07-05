@@ -12,3 +12,5 @@ spring:
     admin:
       properties:
         boostrap.servers: localhost:9092, localhost:9093, localhost:9094
+    template:
+      default-topic: libraryEvents
