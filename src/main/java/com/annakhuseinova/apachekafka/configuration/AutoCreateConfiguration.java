@@ -17,4 +17,6 @@ public class AutoCreateConfiguration {
     public NewTopic libraryEvents(){
         return TopicBuilder.name("libraryEvents").partitions(3).replicas(3).build();
     }
+
+
 }
