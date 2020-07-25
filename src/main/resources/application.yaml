@@ -11,7 +11,7 @@ spring:
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
       properties:
         acks: all
-        retries: 10
+        retries: 10 // retry sending message when there is an error not related to metadata. After 10 tries the message will be designated as failed.
     admin:
       properties:
         boostrap.servers: localhost:9092, localhost:9093, localhost:9094

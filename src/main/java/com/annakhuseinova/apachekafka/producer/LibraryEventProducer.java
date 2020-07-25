@@ -32,7 +32,7 @@ public class LibraryEventProducer {
         Integer key = libraryEvent.getLibraryEventId();
         String value = objectMapper.writeValueAsString(libraryEvent);
         // sendDefault - do not need to provide topic explicitly. Just partition, K, V (and some others)
-        ListenableFuture<SendResult<Integer, String>> listenableFuture = kafkaTemplate.sendDefault(key, value );
+        ListenableFuture<SendResult<Integer, String>> listenableFuture = kafkaTemplate.sendDefault(key, value);
         listenableFuture.addCallback(new ListenableFutureCallback<>() {
             @Override
             public void onFailure(Throwable ex) {

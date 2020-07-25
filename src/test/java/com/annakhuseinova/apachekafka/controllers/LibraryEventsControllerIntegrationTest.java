@@ -39,7 +39,8 @@ class LibraryEventsControllerIntegrationTest {
 
     @BeforeEach
     void setUp() {
-        embeddedKafkaBroker = new EmbeddedKafkaBroker();
+        // Лучше бы создать бин EmbeddedKafkaBroker
+        embeddedKafkaBroker = new EmbeddedKafkaBroker(3);
         Map<String, Object> configs = new HashMap<>(KafkaTestUtils
                 .consumerProps("group1", "true", embeddedKafkaBroker));
         consumer = new DefaultKafkaConsumerFactory<>(configs, new IntegerDeserializer(), new StringDeserializer())
@@ -50,11 +51,6 @@ class LibraryEventsControllerIntegrationTest {
     @AfterEach
     void tearDown() {
         consumer.close();
-    }
-
-    @Autowired
-    public void setEmbeddedKafkaBroker(EmbeddedKafkaBroker embeddedKafkaBroker) {
-        this.embeddedKafkaBroker = embeddedKafkaBroker;
     }
 
     @Autowired
